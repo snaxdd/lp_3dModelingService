@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
-    
+
     //Timer
     function countTimer(deadline) {
         const timerHours = document.querySelector("#timer-hours"),
@@ -17,17 +17,31 @@ window.addEventListener("DOMContentLoaded", () => {
 
             return { timeRemaining, hours, minutes, seconds };
         }
-        
+
+        function timePad(n) {
+            if (n < 10) {
+                return `0${n}`;
+            } else {
+                return n;
+            }
+        }
+
         function updateClock() {
             const timer = getTimeRemaining();
 
-            timerHours.textContent = timer.hours;
-            timerMinutes.textContent = timer.minutes;
-            timerSeconds.textContent = timer.seconds;
+            if (timer.timeRemaining <= 0) {
+                timerHours.textContent = "00";
+                timerMinutes.textContent = "00";
+                timerSeconds.textContent = "00";
+            } else {
+                timerHours.textContent = timePad(timer.hours);
+                timerMinutes.textContent = timePad(timer.minutes);
+                timerSeconds.textContent = timePad(timer.seconds);
+            }
         }
 
         setInterval(updateClock, 1000);
     }
 
-    countTimer("0 july 2020");
+    countTimer("6 july 2020");
 });
