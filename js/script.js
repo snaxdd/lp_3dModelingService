@@ -74,8 +74,8 @@ window.addEventListener("DOMContentLoaded", () => {
             popupClose = document.querySelector(".popup-close");
 
         popupBtn.forEach(element => {
-            element.addEventListener("click", () => {
-                popup.style.display = "block";
+            element.addEventListener("click", () => {              
+               
             });
         });
 
