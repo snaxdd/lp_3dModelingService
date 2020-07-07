@@ -4,8 +4,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const greetings = document.querySelector('#greetings'),
         today = document.querySelector('#today'),
         currentTime = document.querySelector('#current_time'),
-        newYear = document.querySelector('#new_year'),
-        currentDate = new Date(),
+        newYear = document.querySelector('#new_year');
+    let currentDate = new Date(),
         newYearDate = new Date("31 Dec 2020 23:59:59");
 
     const dayOfTheWeek = [
@@ -30,6 +30,14 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    const timePad = n => {
+        if (n < 10) {
+            return `0${n}`;
+        } else {
+            return n;
+        }
+    };
+
     const convertHourseAMPM = time => {
         let amPm = 'PM',
             newHours = (time + 24) % 12;
@@ -46,8 +54,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     greetings.textContent = timesOfDay(currentDate.getHours());
     today.textContent = `Сегодня: ${dayOfTheWeek[currentDate.getDay()]}`;
-    currentTime.textContent = `Текущее время: ${newHours.newHours}:${currentDate.getMinutes()}:` +
-        `${currentDate.getSeconds()} ${newHours.amPm}`;
     newYear.textContent = `До нового года осталось ${daysUntilNewYear} дней`;
-    
+    setInterval(() => {
+        currentDate = new Date();
+        currentTime.textContent = `Текущее время: ${timePad(newHours.newHours)}:${timePad(currentDate.getMinutes())}:` +
+        `${timePad(currentDate.getSeconds())} ${newHours.amPm}`;
+    }, 1000);
 });
