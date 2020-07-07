@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
-    
+
     //Timer
     const countTimer = (deadline) => {
         const timerHours = document.querySelector("#timer-hours"),
@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        updateClock(); 
+        updateClock();
         setInterval(updateClock, 1000);
     };
 
@@ -52,14 +52,14 @@ window.addEventListener("DOMContentLoaded", () => {
             menu = document.querySelector("menu"),
             closeBtn = document.querySelector(".close-btn"),
             menuItems = menu.querySelectorAll("ul>li>a");
-        
+
         const handlerMenu = () => {
             menu.classList.toggle("active-menu");
         };
 
         btnMenu.addEventListener("click", handlerMenu);
         closeBtn.addEventListener("click", handlerMenu);
-        
+
         menuItems.forEach(element => {
             element.addEventListener("click", handlerMenu);
         });
@@ -71,11 +71,28 @@ window.addEventListener("DOMContentLoaded", () => {
     const togglePopup = () => {
         const popup = document.querySelector(".popup"),
             popupBtn = document.querySelectorAll(".popup-btn"),
-            popupClose = document.querySelector(".popup-close");
+            popupClose = document.querySelector(".popup-close"),
+            popupContent = popup.querySelector(".popup-content"),
+            innerWidth = window.innerWidth;
 
         popupBtn.forEach(element => {
-            element.addEventListener("click", () => {              
-               
+            element.addEventListener("click", () => {
+                if (innerWidth < 768) {
+                    popup.style.display = "block";
+                } else {
+                    let top = -60;
+
+                    popup.style.display = "block";
+                    popupContent.style.position = "absolute";
+                    popupContent.style.top = `${top}%`;
+
+                    requestAnimationFrame(function animate() {
+                        if (top++ < 10) {
+                            popupContent.style.top = `${top}%`;
+                            requestAnimationFrame(animate);
+                        }
+                    });
+                }
             });
         });
 
