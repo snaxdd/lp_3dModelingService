@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
     const dateTomorrow = Date.now() + 86400000;
-    
+
     //Timer
     const countTimer = (deadline) => {
         const timerHours = document.querySelector("#timer-hours"),
@@ -59,10 +59,18 @@ window.addEventListener("DOMContentLoaded", () => {
         };
 
         btnMenu.addEventListener("click", handlerMenu);
-        closeBtn.addEventListener("click", handlerMenu);
+        menu.addEventListener("click", (event) => {
+            let target = event.target;
 
-        menuItems.forEach(element => {
-            element.addEventListener("click", handlerMenu);
+            if (target === closeBtn) {
+                menu.classList.toggle("active-menu");
+            } else {
+                menuItems.forEach(item => {
+                    if (target === item) {
+                        menu.classList.toggle("active-menu");
+                    }
+                });
+            }
         });
     };
 
@@ -72,7 +80,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const togglePopup = () => {
         const popup = document.querySelector(".popup"),
             popupBtn = document.querySelectorAll(".popup-btn"),
-            popupClose = document.querySelector(".popup-close"),
             popupContent = popup.querySelector(".popup-content");
 
         let innerWidth = window.innerWidth;
@@ -102,8 +109,18 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        popupClose.addEventListener("click", () => {
-            popup.style.display = "none";
+        popup.addEventListener("click", (event) => {
+            let target = event.target;
+
+            if (target.classList.contains("popup-close")) {
+                popup.style.display = "none";
+            } else {
+                target = target.closest(".popup-content");
+
+                if (!target) {
+                    popup.style.display = "none";
+                }
+            }
         });
     };
 
@@ -130,8 +147,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
         tabHeader.addEventListener("click", (event) => {
             let target = event.target;
-                target = target.closest(".service-header-tab");
-            
+            target = target.closest(".service-header-tab");
+
             if (target.classList.contains("service-header-tab")) {
                 tab.forEach((item, tabIndex) => {
                     if (item === target) {
