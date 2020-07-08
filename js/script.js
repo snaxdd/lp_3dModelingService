@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
-
+    const dateTomorrow = Date.now() + 86400000;
+    
     //Timer
     const countTimer = (deadline) => {
         const timerHours = document.querySelector("#timer-hours"),
@@ -44,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
         setInterval(updateClock, 1000);
     };
 
-    countTimer("7 july 2020");
+    countTimer(dateTomorrow);
 
     //Menu
     const toggleMenu = () => {
@@ -72,8 +73,13 @@ window.addEventListener("DOMContentLoaded", () => {
         const popup = document.querySelector(".popup"),
             popupBtn = document.querySelectorAll(".popup-btn"),
             popupClose = document.querySelector(".popup-close"),
-            popupContent = popup.querySelector(".popup-content"),
+            popupContent = popup.querySelector(".popup-content");
+
+        let innerWidth = window.innerWidth;
+
+        window.addEventListener("resize", () => {
             innerWidth = window.innerWidth;
+        });
 
         popupBtn.forEach(element => {
             element.addEventListener("click", () => {
