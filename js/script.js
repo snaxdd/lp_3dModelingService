@@ -343,7 +343,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 total = price * squareValue * typeValue * countValue * dayValue;
             }
 
-            totalValue.textContent = total;
+            totalValue.textContent = Math.floor(total);
         };
 
         calcContainer.addEventListener("change", event => {
