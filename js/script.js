@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
     const dateTomorrow = Date.now() + 86400000,
-        ourTeamContainer = document.getElementById("command");
+        ourTeamContainer = document.getElementById("command"),
+        calcContainer = document.querySelector(".calc-block");
 
     //Timer
     const countTimer = (deadline) => {
@@ -293,5 +294,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
     ourTeamContainer.addEventListener("mouseout", event => {
         changePhoto(event);
+    });
+
+    const inputDigitValid = target => {
+        const inputs = ["calc-square", "calc-count", "calc-day"],
+            reg = /\D/;
+
+        for (let i = 0; i < inputs.length; i++) {
+            let regClass = new RegExp(inputs[i]);
+
+            if (regClass.test(target.className)) {
+                target.value = target.value.replace(reg, "");
+            }
+        }
+    };
+
+    calcContainer.addEventListener("input", event => {
+        inputDigitValid(event.target);
     });
 });
