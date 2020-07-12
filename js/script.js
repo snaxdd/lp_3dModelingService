@@ -404,6 +404,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 postData(body, () => {
                     statusMsg.textContent = successMsg;
+                    ourForm.reset();
                 }, (error) => {
                     statusMsg.textContent = errorMsg;
                     console.log('Error :>> ', error);
