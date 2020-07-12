@@ -129,7 +129,6 @@ window.addEventListener("DOMContentLoaded", () => {
     togglePopup();
 
     //Tabs
-
     const tabs = () => {
         const tabHeader = document.querySelector(".service-header"),
             tab = tabHeader.querySelectorAll(".service-header-tab"),
@@ -164,7 +163,6 @@ window.addEventListener("DOMContentLoaded", () => {
     tabs();
 
     //Slider
-
     const slider = () => {
         const slide = document.querySelectorAll(".portfolio-item"),
             btn = document.querySelectorAll(".portfolio-btn"),
@@ -314,7 +312,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     //Calculator
-
     const calc = (price = 100) => {
         const calcType = document.querySelector(".calc-type"),
             calcSquare = document.querySelector(".calc-square"),
@@ -359,13 +356,12 @@ window.addEventListener("DOMContentLoaded", () => {
     calc(100);
 
     //Send AJAX form
-
     const sendForm = () => {
         const errorMsg = "Что-то пошло не так...",
             loadMsg = "Загрузка...",
             successMsg = "Спасибо! Мы скоро свяжемся с вами.";
 
-        const form = document.getElementById("form1");
+        const body = document.querySelector("body");
 
         const statusMsg = document.createElement("div");
 
@@ -389,24 +385,30 @@ window.addEventListener("DOMContentLoaded", () => {
             request.send(JSON.stringify(body));
         };
 
-        form.addEventListener("submit", event => {
+        body.addEventListener("submit", event => {
             event.preventDefault();
-            form.appendChild(statusMsg);
-            statusMsg.textContent = loadMsg;
+            
+            const ourForm = event.target;
 
-            const formData = new FormData(form);
-            let body = {};
+            if (ourForm.tagName === "FORM") {
+                ourForm.appendChild(statusMsg);
+                statusMsg.textContent = loadMsg;
 
-            formData.forEach((value, key) => {
-                body[key] = value;
-            });
+                const formData = new FormData(ourForm);
 
-            postData(body, () => {
-                statusMsg.textContent = successMsg;
-            }, (error) => {
-                statusMsg.textContent = errorMsg;
-                console.error(error);
-            });
+                let body = {};
+
+                formData.forEach( (value, key) => {
+                    body[key] = value;
+                });
+
+                postData(body, () => {
+                    statusMsg.textContent = successMsg;
+                }, (error) => {
+                    statusMsg.textContent = errorMsg;
+                    console.log('Error :>> ', error);
+                });
+            }       
         });
     };
 
