@@ -422,11 +422,25 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    const cyrValid = element => {
+        const reg = /^([А-яЁ-ё]\s*)+\s*$/g;
+
+        if (!reg.test(element.value.trim())) {
+            element.value = element.value.slice(0, element.value.length - 1);
+        }
+    };
+
     body.addEventListener("input", event => {
         let target = event.target;
         
         if (target.classList.contains('form-phone')) {
             phoneValid(target);
+        } else if (target.tagName.toLowerCase() === "input" &&
+        target.name.toLowerCase() === "user_name") {
+            cyrValid(target);
+        } else if (target.tagName.toLowerCase() === "input" &&
+        target.name.toLowerCase() === "user_message") {
+            cyrValid(target);
         }
     });
 });
