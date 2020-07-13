@@ -2,7 +2,8 @@ window.addEventListener("DOMContentLoaded", () => {
     "use strict";
     const dateTomorrow = Date.now() + 86400000,
         ourTeamContainer = document.getElementById("command"),
-        calcContainer = document.querySelector(".calc-block");
+        calcContainer = document.querySelector(".calc-block"),
+        body = document.querySelector("body");
 
     //Timer
     const countTimer = (deadline) => {
@@ -361,8 +362,6 @@ window.addEventListener("DOMContentLoaded", () => {
             loadMsg = "Загрузка...",
             successMsg = "Спасибо! Мы скоро свяжемся с вами.";
 
-        const body = document.querySelector("body");
-
         const statusMsg = document.createElement("div");
 
         const postData = (body, outputData, errorData) => {
@@ -414,4 +413,20 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     sendForm();
+
+    const phoneValid = element => {
+        const reg = /^\+?\d*$/;
+
+        if (!reg.test(element.value.trim())) {
+            element.value = element.value.slice(0, element.value.length - 1);
+        }
+    };
+
+    body.addEventListener("input", event => {
+        let target = event.target;
+        
+        if (target.classList.contains('form-phone')) {
+            phoneValid(target);
+        }
+    });
 });
