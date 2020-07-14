@@ -369,25 +369,13 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     const postData = (body) => {
-      return new Promise((resolve, reject) => {
-        const request = new XMLHttpRequest();
-
-        request.addEventListener("readystatechange", () => {
-          if (request.readyState !== 4) {
-            return;
-          }
-
-          if (request.status === 200) {
-            resolve();
-          } else {
-            reject(request.status);
-          }
-        });
-
-        request.open("POST", "../server.php");
-        request.setRequestHeader("Content-Type", "application-json");
-        request.send(JSON.stringify(body));
-      });
+      return fetch("../server.php", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        body: body
+      });  
     };
 
     body.addEventListener("submit", event => {
@@ -400,15 +388,15 @@ window.addEventListener("DOMContentLoaded", () => {
         statusMsg.textContent = loadMsg;
 
         const formData = new FormData(ourForm);
+        
+        postData(formData)
+          .then((response) => {
+            if (response.status !== 200) {
+              throw new Error(`>> status: ${response.status}`);
+            }
 
-        let body = {};
-
-        formData.forEach((value, key) => {
-          body[key] = value;
-        });
-
-        postData(body)
-          .then(insertMsg(statusMsg, successMsg))
+            insertMsg(statusMsg, successMsg);
+          })
           .catch((error) => {
             statusMsg.textContent = errorMsg;
             console.error(error);    
