@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 50 version
-*/
-
 @font-face {
     font-family: Roboto;
     src: url(../fonts/Roboto-Light.eot);
@@ -48,11 +41,9 @@ html {
 .flex {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap
+    flex-wrap: wrap
 }
 
 img {
@@ -103,28 +94,22 @@ body menu {
     z-index: 99;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    -webkit-align-items: center;
-            align-items: center;
+    align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    -webkit-justify-content: center;
-            justify-content: center;
+    justify-content: center;
     -webkit-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-        transform: translateX(-100%)
+    transform: translateX(-100%)
 }
 
 body .active-menu {
     -webkit-transition: 1s;
-    -o-transition: 1s;
     transition: 1s;
     -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-        transform: translateX(100%)
+    transform: translateX(100%)
 }
 
 body ul {
@@ -155,11 +140,9 @@ body .close-btn {
     left: 30px;
     font-size: 3rem;
     -webkit-transition: .2s;
-    -o-transition: .2s;
     transition: .2s;
     -webkit-transform-origin: 50% 53%;
-    -ms-transform-origin: 50% 53%;
-        transform-origin: 50% 53%;
+    transform-origin: 50% 53%;
     display: block;
     line-height: 3rem;
     text-align: center;
@@ -170,8 +153,7 @@ body .close-btn {
 
 body .close-btn:hover {
     -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-        transform: rotate(180deg)
+    transform: rotate(180deg)
 }
 
 body .underline {
@@ -206,8 +188,7 @@ body small {
 body .main-form input {
     width: 29rem;
     height: 5rem;
-    -webkit-border-radius: 5rem;
-            border-radius: 5rem;
+    border-radius: 5rem;
     font-size: 1.3rem;
     border: none;
     padding-left: 2.7rem;
@@ -221,8 +202,7 @@ body .form-btn {
     font-family: Roboto, sans-serif;
     font-weight: 500;
     background-color: #19b5fe;
-    -webkit-border-radius: 5rem;
-            border-radius: 5rem;
+    border-radius: 5rem;
     width: 23rem;
     height: 6rem;
     margin-top: 20px
@@ -272,12 +252,10 @@ main header .phone-media {
     text-align: left;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    -webkit-align-items: center;
-            align-items: center
+    align-items: center
 }
 
 main header .phone-media .media-object {
@@ -330,23 +308,20 @@ main .main-form-input {
 
 main .main-form-input input {
     -webkit-transform: translateY(-3rem);
-    -ms-transform: translateY(-3rem);
-        transform: translateY(-3rem)
+    transform: translateY(-3rem)
 }
 
 main .main-form .form-btn {
     display: inline-block;
     text-align: center;
     -webkit-transform: translateY(-4rem);
-    -ms-transform: translateY(-4rem);
-        transform: translateY(-4rem)
+    transform: translateY(-4rem)
 }
 
 main a {
     display: inline-block;
     margin: 3rem auto;
     -webkit-transition: 1s;
-    -o-transition: 1s;
     transition: 1s
 }
 
@@ -357,27 +332,22 @@ main a {
 
 .service-header {
     border: 1px solid #19b5fe;
-    -webkit-border-radius: 3rem;
-            border-radius: 3rem;
+    border-radius: 3rem;
     margin-bottom: 3rem;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
+    flex-wrap: wrap;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
-            justify-content: space-between
+    justify-content: space-between
 }
 
 .service-header-tab {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
-    -webkit-flex-grow: 1;
-            flex-grow: 1;
+    flex-grow: 1;
     height: auto;
     text-transform: uppercase;
     vertical-align: middle;
@@ -391,8 +361,7 @@ main a {
 
 .service-header-tab.active {
     background-color: #19b5fe;
-    -webkit-border-radius: 3rem;
-            border-radius: 3rem;
+    border-radius: 3rem;
     color: #fff !important
 }
 
@@ -439,12 +408,10 @@ main a {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     opacity: 0;
     -webkit-transition: opacity .5s;
-    -o-transition: opacity .5s;
     transition: opacity .5s
 }
 
@@ -455,14 +422,12 @@ main a {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
 }
 
 .portfolio-item-active {
     opacity: 1;
     -webkit-transition: opacity .5s;
-    -o-transition: opacity .5s;
     transition: opacity .5s
 }
 
@@ -476,10 +441,8 @@ main a {
     background-color: rgba(0, 0, 0, .5);
     background-repeat: no-repeat;
     background-size: 34px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    border-radius: 50%;
     -webkit-transition: background-color .2s;
-    -o-transition: background-color .2s;
     transition: background-color .2s
 }
 
@@ -498,7 +461,6 @@ main a {
 .portfolio-btn:hover {
     background-color: rgba(0, 0, 0, .8);
     -webkit-transition: background-color .2s;
-    -o-transition: background-color .2s;
     transition: background-color .2s
 }
 
@@ -509,12 +471,10 @@ main a {
     margin: 20px auto 0;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    -webkit-justify-content: center;
-            justify-content: center;
+    justify-content: center;
     z-index: 5
 }
 
@@ -523,8 +483,7 @@ main a {
     height: 16px;
     width: 16px;
     margin: 0 10px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
+    border-radius: 50%;
     border: solid #fff;
     display: inline-block;
     -webkit-transition: background-color, -webkit-transform .4s;
@@ -534,15 +493,13 @@ main a {
 .portfolio-dots .dot-active {
     background-color: #19b5fe;
     -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-        transform: scale(1.2)
+    transform: scale(1.2)
 }
 
 .portfolio-dots .dot:hover {
     background-color: #53c6fe;
     -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-        transform: scale(1.2)
+    transform: scale(1.2)
 }
 
 .prove {
@@ -626,8 +583,7 @@ main a {
 
 .command__photo {
     width: 225px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%
+    border-radius: 50%
 }
 
 .calc {
@@ -643,25 +599,20 @@ main a {
 .calc-block {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-            flex-wrap: wrap;
+    flex-wrap: wrap;
     -ms-flex-pack: distribute;
-    -webkit-justify-content: space-around;
-            justify-content: space-around;
+    justify-content: space-around;
     margin: auto
 }
 
 .calc-item {
     -ms-flex-preferred-size: 48%;
-    -webkit-flex-basis: 48%;
-            flex-basis: 48%;
+    flex-basis: 48%;
     min-width: 200px;
     height: 47px;
-    -webkit-border-radius: 1rem;
-            border-radius: 1rem;
+    border-radius: 1rem;
     border: 1px solid #19b5fe;
     margin: 15px 0;
     color: #464646;
@@ -674,8 +625,7 @@ main a {
 .calc-total {
     border-bottom: 1px solid #000;
     -ms-flex-preferred-size: 48%;
-    -webkit-flex-basis: 48%;
-            flex-basis: 48%;
+    flex-basis: 48%;
     color: #19b5fe;
     font-size: 18px;
     text-align: left;
@@ -744,8 +694,7 @@ main a {
 .connect .footer-form .top-form {
     width: 100%;
     height: 4.9rem;
-    -webkit-border-radius: .7rem;
-            border-radius: .7rem;
+    border-radius: .7rem;
     font-size: 1.3rem;
     border: none;
     padding-left: 1.7rem;
@@ -754,8 +703,7 @@ main a {
 
 .connect .footer-form .mess {
     width: 100%;
-    -webkit-border-radius: 1rem;
-            border-radius: 1rem;
+    border-radius: 1rem;
     font-size: 1.3rem;
     border: none;
     padding-top: 1rem;
@@ -778,8 +726,7 @@ main a {
 
 .connect-adress img {
     border: 1px solid #fff;
-    -webkit-border-radius: 3px;
-            border-radius: 3px;
+    border-radius: 3px;
     padding: 5px;
     margin-right: 1rem
 }
@@ -803,8 +750,7 @@ footer a {
 footer a img {
     text-align: center;
     border: 1px solid #fff;
-    -webkit-border-radius: 3px;
-            border-radius: 3px;
+    border-radius: 3px;
     padding: .5rem;
     height: 3rem;
     width: 3rem
@@ -850,8 +796,7 @@ footer .web {
     left: 38%;
     top: 10%;
     -webkit-transform: translateX(-50px);
-    -ms-transform: translateX(-50px);
-        transform: translateX(-50px);
+    transform: translateX(-50px);
     padding: 2rem 6rem;
     background-color: #24241f
 }
@@ -949,8 +894,7 @@ footer .web {
 
     main .main-form-input input {
         -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-            transform: translateY(0);
+        transform: translateY(0);
         display: inline-block;
         text-align: center;
         margin-bottom: 1rem;
@@ -960,8 +904,7 @@ footer .web {
     main .main-form .form-btn {
         margin: auto;
         -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-            transform: translateY(0)
+        transform: translateY(0)
     }
 
     .service-inner {
@@ -1080,8 +1023,7 @@ footer .web {
     .portfolio .tabs ul li {
         margin-bottom: 1rem;
         border: 1px solid #19b5fe;
-        -webkit-border-radius: 3rem;
-                border-radius: 3rem
+        border-radius: 3rem
     }
 
     .process .circle {
@@ -1170,8 +1112,7 @@ footer .web {
 
     body .active-menu {
         -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-            transform: translateX(0)
+        transform: translateX(0)
     }
 
     body .underline {

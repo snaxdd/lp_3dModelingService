@@ -4,9 +4,8 @@ const sendForm = () => {
   const errorMsg = "Что-то пошло не так...",
     loadMsg = "Загрузка...",
     successMsg = "Спасибо! Мы скоро свяжемся с вами.",
-    body = document.querySelector("body");
-
-  const statusMsg = document.createElement("div");
+    body = document.querySelector("body"),
+    statusMsg = document.createElement("div");
 
   const insertMsg = (elem, msg) => {
     elem.textContent = msg;
@@ -40,15 +39,14 @@ const sendForm = () => {
 
   body.addEventListener("submit", event => {
     event.preventDefault();
-
     const ourForm = event.target;
 
     if (ourForm.tagName === "FORM") {
-      ourForm.appendChild(statusMsg);
-      statusMsg.textContent = loadMsg;
-
       const formData = new FormData(ourForm);
 
+      ourForm.appendChild(statusMsg);
+      statusMsg.textContent = loadMsg;
+      
       postData(formData)
         .then((response) => {
           if (response.status !== 200) {

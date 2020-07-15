@@ -9,11 +9,12 @@ const calc = (price = 100) => {
     calcContainer = document.querySelector(".calc-block");
 
   const countSum = () => {
+    const typeValue = calcType.options[calcType.selectedIndex].value;
+    
     let total = 0,
       countValue = 1,
-      dayValue = 1;
-    const typeValue = calcType.options[calcType.selectedIndex].value;
-    let squareValue = +calcSquare.value;
+      dayValue = 1,
+      squareValue = +calcSquare.value;
 
     if (calcCount.value > 1) {
       countValue += (calcCount.value - 1) / 10;

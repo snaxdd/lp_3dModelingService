@@ -1,5 +1,10 @@
 'use strict';
 
+import 'nodelist-foreach-polyfill';
+import '@babel/polyfill';
+import 'element-closest-polyfill';
+import 'mdn-polyfills/Node.prototype.append';
+
 import countTimer from './modules/countTimer';
 import calc from './modules/calc';
 import sendForm from './modules/sendForm';
@@ -28,7 +33,7 @@ slider();
 teamPhoto();
 
 //Calculator
-calc(100);
+calc();
 
 //Send AJAX form
 sendForm();
