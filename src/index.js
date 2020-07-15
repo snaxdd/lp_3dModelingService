@@ -4,6 +4,7 @@ import 'nodelist-foreach-polyfill';
 import '@babel/polyfill';
 import 'element-closest-polyfill';
 import 'mdn-polyfills/Node.prototype.append';
+import 'fetch-polyfill';
 
 import countTimer from './modules/countTimer';
 import calc from './modules/calc';
