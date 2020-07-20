@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
     const dateTomorrow = Date.now() + 86400000;
-    
+    const anchors = document.querySelectorAll('a[data-anchor="true"]');
+
     //Timer
     const countTimer = (deadline) => {
         const timerHours = document.querySelector("#timer-hours"),
@@ -67,6 +68,21 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     toggleMenu();
+
+    //SmoothScroll
+
+    anchors.forEach(item => {
+        item.addEventListener('click', event => {
+            event.preventDefault();
+
+            const link = item.getAttribute('href').substr(1);
+
+            document.getElementById(link).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
 
     //Popup
     const togglePopup = () => {
