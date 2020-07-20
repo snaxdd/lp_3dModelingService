@@ -39,6 +39,8 @@ select.addEventListener('change', () => {
             const { brand, model, price } = item;
             output.innerHTML = `Тачка ${brand} ${model} <br>
             Цена: ${price}$`;
+        } else if (select.value === "no") {
+            output.innerHTML = "выберите тачку";
         }
     });
 });
