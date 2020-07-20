@@ -49,27 +49,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //Menu
     const toggleMenu = () => {
-        const btnMenu = document.querySelector(".menu"),
-            menu = document.querySelector("menu"),
-            closeBtn = document.querySelector(".close-btn"),
+        const menu = document.querySelector("menu"),
             menuItems = menu.querySelectorAll("ul>li>a");
 
+        const body = document.querySelector("body");
+        
         const handlerMenu = () => {
             menu.classList.toggle("active-menu");
         };
 
-        btnMenu.addEventListener("click", handlerMenu);
-        menu.addEventListener("click", (event) => {
-            let target = event.target;
-
-            if (target === closeBtn) {
-                menu.classList.toggle("active-menu");
-            } else {
-                menuItems.forEach(item => {
-                    if (target === item) {
-                        menu.classList.toggle("active-menu");
-                    }
-                });
+        body.addEventListener("click", event => {
+            const target = event.target;
+            
+            if (target.closest(".menu")) {
+                handlerMenu();
+            } else if (target.className === "close-btn" && target.closest(".active-menu")) {
+                handlerMenu();
+            } else if (target.closest(".menu-links")) {
+                handlerMenu();
+            } else if (!target.closest(".active-menu")) {
+                handlerMenu();
             }
         });
     };
