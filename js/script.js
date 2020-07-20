@@ -178,7 +178,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const createDots = sliderItems => {
             for (let i = 0; i < sliderItems.length; i++) {
                 const li = document.createElement("li");
-                
+
                 if (i === 0) {
                     li.className = "dot dot-active";
                 } else {
@@ -322,10 +322,33 @@ window.addEventListener("DOMContentLoaded", () => {
             calcCount = document.querySelector(".calc-count"),
             totalValue = document.getElementById("total");
 
+        function animate({ timing, draw, duration }) {
+
+            let start = performance.now();
+
+            requestAnimationFrame(function animate(time) {
+
+                let timeFraction = (time - start) / duration;
+                if (timeFraction > 1) {
+                    timeFraction = 1;
+                }
+
+                let progress = timing(timeFraction);
+
+                draw(progress);
+
+                if (timeFraction < 1) {
+                    requestAnimationFrame(animate);
+                }
+
+            });
+        }
+
         const countSum = () => {
             let total = 0,
                 countValue = 1,
                 dayValue = 1;
+
             const typeValue = calcType.options[calcType.selectedIndex].value;
             let squareValue = +calcSquare.value;
 
@@ -342,15 +365,23 @@ window.addEventListener("DOMContentLoaded", () => {
             if (typeValue && squareValue) {
                 total = price * squareValue * typeValue * countValue * dayValue;
             }
-
-            totalValue.textContent = Math.floor(total);
+            
+            animate({
+                duration: 500,
+                timing(timeFraction) {
+                    return timeFraction;
+                },
+                draw(progress) {
+                    totalValue.textContent = Math.floor(progress * total);
+                }
+            });
         };
 
         calcContainer.addEventListener("change", event => {
             const target = event.target;
 
             if (target.matches(".calc-type") || target.matches(".calc-square") ||
-            target.matches(".calc-day") || target.matches(".calc-count")) {
+                target.matches(".calc-day") || target.matches(".calc-count")) {
                 countSum();
             }
         });
